@@ -7,7 +7,9 @@ import java.util.List;
 import se.kth.iv1350.integration.ItemDTO;
 
 
-
+/**
+ * This class contains a list of itemDTOs, the time of sale of the purchase, total tax and the running total for the purchase.
+ */
 public class Sale {
     private double runningTotal;
     private double totalTax;
@@ -16,12 +18,20 @@ public class Sale {
     private List<RevenueObserver> revenueObservers = new ArrayList<>();
 
 
+    /**
+     * Initializes the sale object.
+     */
     public Sale () {
         this.items = new ArrayList<>();
         this.timeOfSale = LocalDateTime.now();
         this.totalTax = 0.0;
         this.runningTotal = 0.0;
     }
+
+    /**
+     * Adds an item to the list of items and updates the relevant fields
+     * @param foundItem is the ItemDTO containing the information of the scanned item.
+     */
     public void addItemToItemList  (ItemDTO foundItem) {
         for(SoldItem soldItem : items)
             if(soldItem.getItem().getItemID().equals(foundItem.getItemID()) ){
@@ -37,30 +47,54 @@ public class Sale {
 
     }
 
+   /**
+     * @return returns the running total.
+     */
     public double getRunningTotal () {
         return runningTotal;
     }
 
+    /**
+     * @return returns the total tax.
+     */
     public double getTotalTax () {
         return totalTax;
     }
+
+    /**
+     * @return returns the time of the sale.
+     */
     public LocalDateTime getTimeOfSale(){
         return timeOfSale;
     }
 
+    /**
+     * @return returns the list of the items 
+     */
     public List<SoldItem> getList(){
-    return items;
+        return items;
     }
     
+    /**
+     * @return returns the itemDTO for the item in the specified index.
+     */
     public SoldItem getItem(int item){
         return items.get(item);
     }
+
+    /**
+     * Adds the time to the sale and notifies the observer.
+     * @param sale the object containing information about the sale.
+     */
     public  void endSale (Sale sale){
         addFinalTimeOfSale(sale);
         notifyObservers();
     }
 
-
+    /**
+     * Displays the item description, price and running total.
+     * @param foundItem the itemDTO for the scanned item.
+     */
     public void displaySaleInfo(ItemDTO foundItem){
 
         System.out.println("Item : " + foundItem.getItemDesc());
@@ -68,6 +102,10 @@ public class Sale {
         System.out.println("Running total : " + runningTotal);
     }
 
+    /**
+     * Sets the time in the sale object to the current time.
+     * @param sale the object containing information about the sale such as the time of the sale.
+     */
      void addFinalTimeOfSale (Sale sale ){
         LocalDateTime timeOfSale = LocalDateTime.now();
     }
