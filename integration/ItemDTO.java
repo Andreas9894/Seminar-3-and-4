@@ -26,19 +26,33 @@ public final class ItemDTO {
 
     }
 
+    /**
+     * @return returns the itemID.
+     */
     public String getItemID() {
         return itemID;
     }
+
+    /**
+     * @return returns the item description of the specific item.
+     */
     public String getItemDesc() {
         return itemDesc;
     }
+
+    /**
+     * @return returns the price of the specific item.
+     */
     public double getPrice(){
         return price;
     }
+
+    /**
+     * @return returns the tax rate of the specific item.
+     */
     public double getTaxRate (){
         return taxRate;
     }
-
 
 
 
