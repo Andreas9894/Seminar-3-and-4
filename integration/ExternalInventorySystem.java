@@ -17,7 +17,7 @@ public class ExternalInventorySystem {
 
 
     /**
-     * Adds two specific items to the external inventory system
+     * Adds three specific items to the external inventory system
      */
     public ExternalInventorySystem () {
         items.add(new ItemDTO("choklad231", 0.2, "Daimchoklad", 15));
@@ -30,7 +30,7 @@ public class ExternalInventorySystem {
     /**
      * Searches the external inventory system for a matching itemID and returns it if found.
      * @param itemID the specified item's itemID
-     * @return
+     * @return returns the found items ItemDTO.
      * @throws ItemIDException if an item with the matching itemID can not be found.
      * @throws ConnectionException if a connection to the servers can't be established.
      */
