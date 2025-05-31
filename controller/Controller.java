@@ -101,6 +101,10 @@ public class Controller {
         System.out.println("Final Total including VAT : " + sale.getRunningTotal());
     }
 
+     /**
+     * Updates the external systems, displays the change and prints the receipt
+     * @param amountPaid is the amount paid by the customer to cover the cost of the sale.
+     */
     public void customerPaysAmount(double amountPaid){
         finalChange = register.calculateChange(amountPaid, sale.getRunningTotal());
         updateExternalSystems(sale);
