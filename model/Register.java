@@ -24,7 +24,7 @@ public class Register {
      * Calculates the amount of change to give back to customer.
      * @param amountPaid the amount of money provided by the customer
      * @param finalTotal The final cost of the entire purchase including VAT rate.
-     * @return
+     * @return returns the change to be given back to the customer.
      */
 
     public double calculateChange (double amountPaid, double finalTotal){
