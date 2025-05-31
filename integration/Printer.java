@@ -5,7 +5,17 @@ import java.util.List;
 import se.kth.iv1350.model.Sale;
 import se.kth.iv1350.model.SoldItem;
 
+/**
+ * Class responsible for the printing of the receipt. 
+ */
 public class Printer {
+
+    /**
+     * Method responsible for formatting and printing the receipt with all the required information. 
+     * @param amountPaid is the amount of money paid by the customer.
+     * @param change is the amount of money to give back to the customer.
+     * @param sale is the list of items with details of the purchase.
+     */
 
     public void printReceipt (double amountPaid, double change, Sale sale) {
 
