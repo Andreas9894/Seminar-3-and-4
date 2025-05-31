@@ -42,8 +42,8 @@ public class SaleTest {
 
     @Test
     public void testAddItemToItemListUpdatesRunningTotalAndTax() {
-        sale.addItemToItemList(item1); // price = 10, tax = 1
-        sale.addItemToItemList(item2); // price = 20, tax = 3
+        sale.addItemToItemList(item1); 
+        sale.addItemToItemList(item2); 
 
         assertEquals(30.0, sale.getRunningTotal(), 0.0);
         assertEquals(4.0, sale.getTotalTax(), 0.0);
