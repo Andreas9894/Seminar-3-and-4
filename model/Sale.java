@@ -95,9 +95,12 @@ public class Sale {
     }
 
     /**
-     * Displays the item description, price and running total.
+     * Creates the saleDTO
      * @param foundItem the itemDTO for the scanned item.
      */
+    
+    // New code: The sale class now creates a saleDTO instead of printing information 
+    // to the view like before and returns the new DTO to the controller.
     public SaleDTO displaySaleInfo(ItemDTO foundItem){
 
         SaleDTO saleDTO = new SaleDTO(foundItem, getRunningTotal());
