@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.integration.ItemDTO;
+import se.kth.iv1350.model.SaleDTO;
 
 
 /**
@@ -17,9 +18,8 @@ public class Sale {
     private List <SoldItem> items = new ArrayList<>();
     private List<RevenueObserver> revenueObservers = new ArrayList<>();
 
-
     /**
-     * Initializes the sale object.
+     * Instantiates the sale object.
      */
     public Sale () {
         this.items = new ArrayList<>();
@@ -47,7 +47,7 @@ public class Sale {
 
     }
 
-   /**
+    /**
      * @return returns the running total.
      */
     public double getRunningTotal () {
@@ -55,6 +55,7 @@ public class Sale {
     }
 
     /**
+     * 
      * @return returns the total tax.
      */
     public double getTotalTax () {
@@ -62,6 +63,7 @@ public class Sale {
     }
 
     /**
+     * 
      * @return returns the time of the sale.
      */
     public LocalDateTime getTimeOfSale(){
@@ -76,6 +78,7 @@ public class Sale {
     }
     
     /**
+     * 
      * @return returns the itemDTO for the item in the specified index.
      */
     public SoldItem getItem(int item){
@@ -95,11 +98,11 @@ public class Sale {
      * Displays the item description, price and running total.
      * @param foundItem the itemDTO for the scanned item.
      */
-    public void displaySaleInfo(ItemDTO foundItem){
+    public SaleDTO displaySaleInfo(ItemDTO foundItem){
 
-        System.out.println("Item : " + foundItem.getItemDesc());
-        System.out.println("Price : " + foundItem.getPrice());
-        System.out.println("Running total : " + runningTotal);
+        SaleDTO saleDTO = new SaleDTO(foundItem, getRunningTotal());
+        return saleDTO;
+        
     }
 
     /**
