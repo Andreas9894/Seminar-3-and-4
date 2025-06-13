@@ -11,6 +11,7 @@ import se.kth.iv1350.model.RevenueObserver;
 import se.kth.iv1350.model.Sale;
 import se.kth.iv1350.util.LogHandler;
 import se.kth.iv1350.view.ErrorMessageHandler;
+import se.kth.iv1350.model.SaleDTO;
 
 /**
  * This is the only controller in the application and all 
@@ -57,15 +58,15 @@ public class Controller {
     * Searches the external inventory for the specified item and adds it to the sale.
     * @param itemID is the itemID of the specified item.
     * @return
- * @throws Exception 
+    * @throws Exception 
     */
 
-    public void scanItem  (String itemID) throws Exception {
+    public SaleDTO scanItem  (String itemID) throws Exception {
            
         try {
             ItemDTO foundItem = extInvSys.getItem(itemID);
             sale.addItemToItemList(foundItem);
-            sale.displaySaleInfo(foundItem);
+            return sale.displaySaleInfo(foundItem);
           
          } catch (ItemIDException e) {
             throw e;
@@ -94,24 +95,26 @@ public class Controller {
     }
 
     /**
-     * Ends the sale, adds the current time to the sale class and prints the total cost.
+     * Ends the sale, adds the current time to the sale class and returns the total to the view.
+     * @return returns the running total after ending the sale.
      */
-    public void endSale (){
+    public double endSale (){
         sale.endSale(sale);
-        System.out.println("Final Total including VAT : " + sale.getRunningTotal());
+        return sale.getRunningTotal();
     }
-
-     /**
+    /**
      * Updates the external systems, displays the change and prints the receipt
      * @param amountPaid is the amount paid by the customer to cover the cost of the sale.
      */
+
     public void customerPaysAmount(double amountPaid){
         finalChange = register.calculateChange(amountPaid, sale.getRunningTotal());
         updateExternalSystems(sale);
 
-        System.out.println("Change : " +finalChange );
+        System.out.println("Change: " + finalChange);
 
         printReceipt(amountPaid);
+        
 
     }
 
