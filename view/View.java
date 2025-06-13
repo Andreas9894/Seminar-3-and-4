@@ -19,10 +19,12 @@ public class View {
         this.errorMessageHandler = new ErrorMessageHandler();
     }
 
-    private void displaySaleInfo (SaleDTO saleInfo){
-        System.out.println("Item: " + saleInfo.getItemDesc());
-        System.out.println("Price: " + saleInfo.getPrice());
-        System.out.println("Total: " + saleInfo.getRunningTotal());
+    // Created a new method to  print the saleInfo and to make the trialExecution
+    // less cluttered
+    private void displaySaleInfo (SaleDTO saleDTO){
+        System.out.println("Item: " + saleDTO.getItemDesc());
+        System.out.println("Price: " + saleDTO.getPrice());
+        System.out.println("Total: " + saleDTO.getRunningTotal());
 
     }
 
@@ -43,9 +45,11 @@ public class View {
         contr.addRevenueObserver(revenueView);
         contr.addRevenueObserver(revenueFile);
 
+        // Slightly changed the try part of the loop so it stores the saleDTO and 
+        // calls upon the displaySaleInfo method to print the relevant parts of the saleDTO 
          for (String item : items){
             try{
-            SaleDTO saleInfo = contr.scanItem(item);
+            SaleDTO saleDTO = contr.scanItem(item);
             displaySaleInfo(saleInfo);
             }
             catch (ItemIDException e){
