@@ -60,7 +60,7 @@ public class Controller {
     * @return
     * @throws Exception 
     */
-
+    //UPDATED CODE: made the scanItem return the saleDTO
     public SaleDTO scanItem  (String itemID) throws Exception {
            
         try {
