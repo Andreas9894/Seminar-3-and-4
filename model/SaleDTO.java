@@ -3,7 +3,7 @@ package se.kth.iv1350.model;
 import se.kth.iv1350.integration.ItemDTO;
 
 /**
- * contains information about the item being scanned and the running total
+ * Contains information about the item being scanned and the running total
  */
 public final class SaleDTO{
 
@@ -28,10 +28,11 @@ public final class SaleDTO{
     public String getItemDesc () {
         return itemDTO.getItemDesc();
     }
+    
     public double getPrice() {
         return itemDTO.getPrice();
     }
-
+    
     public double getRunningTotal() {
         return runningTotal;
     }
