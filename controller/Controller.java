@@ -66,7 +66,9 @@ public class Controller {
         try {
             ItemDTO foundItem = extInvSys.getItem(itemID);
             sale.addItemToItemList(foundItem);
-            return sale.displaySaleInfo(foundItem);
+            SaleDTO saleDTO = sale.displaySaleInfo(foundItem);
+
+            return saleDTO;
           
          } catch (ItemIDException e) {
             throw e;
